@@ -1,19 +1,17 @@
 import Main from '../../pages/main/main';
 
-type AppMainProps= {
+type Props= {
   genre: string;
   date: string;
   titleFilm: string;
 };
 
-function App({genre, date, titleFilm}: AppMainProps): JSX.Element {
-  return (
-    <Main
-      genre = {genre}
-      date = {date}
-      titleFilm = {titleFilm}
-    />
-  );
-}
+const App = ({genre, date, titleFilm}: Props): JSX.Element => (
+  <Main
+    genre = {genre}
+    date = {date}
+    titleFilm = {titleFilm}
+  />
+);
 
 export default App;
