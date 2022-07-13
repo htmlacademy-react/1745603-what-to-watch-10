@@ -6,8 +6,8 @@ import SignIn from '../../pages/sign-in/SignIn';
 import MyList from '../../pages/my-list/MyList';
 import Review from '../../pages/review/Review';
 import Player from '../../pages/player/Player';
-import NotFoundPage from '../not-found-page/NotFoundPage';
-import PrivateRoute from '../../components/private-route/PrivateRoute';
+import { NotFoundPage } from 'src/components';
+import { PrivateRoute } from 'src/components';
 
 type Props= {
   genre: string;

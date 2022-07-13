@@ -1,5 +1,5 @@
-import FilmCard from '../../components/film-card/FilmCard';
-import Logo from '../../components/logo/Logo';
+import { FilmCard } from 'src/components';
+import { Logo } from 'src/components';
 
 const MyList = (): JSX.Element => (
   <div className="user-page">

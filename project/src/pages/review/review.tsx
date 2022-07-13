@@ -1,4 +1,4 @@
-import Logo from '../../components/logo/Logo';
+import { Logo } from 'src/components';
 
 const Review = (): JSX.Element => (
   <section className="film-card film-card--full">

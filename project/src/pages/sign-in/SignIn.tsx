@@ -1,4 +1,4 @@
-import Logo from '../../components/logo/Logo';
+import { Logo } from 'src/components';
 
 const SignIn = (): JSX.Element => (
   <div className="user-page">
