@@ -1,5 +1,4 @@
-import { FilmCard } from 'src/components';
-import { Logo } from 'src/components';
+import { FilmCard, Logo } from 'src/components';
 
 const Film = (): JSX.Element => (
   <section>
@@ -12,7 +11,7 @@ const Film = (): JSX.Element => (
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header film-card__head">
-          < Logo />
+          <Logo />
 
           <ul className="user-block">
             <li className="user-block__item">

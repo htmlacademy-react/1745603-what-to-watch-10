@@ -1,5 +1,4 @@
-import { FilmCard } from 'src/components';
-import { Logo } from 'src/components';
+import { FilmCard, Logo } from 'src/components';
 
 type Props = {
   genre: string;

@@ -3,7 +3,7 @@ import { Logo } from 'src/components';
 const SignIn = (): JSX.Element => (
   <div className="user-page">
     <header className="page-header user-page__head">
-      < Logo />
+      <Logo />
 
       <h1 className="page-title user-page__title">Sign in</h1>
     </header>
