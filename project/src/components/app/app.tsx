@@ -2,25 +2,24 @@ import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from 'src/const';
 import {Film, Main, MyList, SignIn, Player, Review} from 'src/pages';
 import {NotFoundPage, PrivateRoute} from 'src/components';
+import {FilmInfo} from 'src/types/films';
 
 type Props= {
-  genre: string;
-  date: string;
-  titleFilm: string;
+  filmInfo: FilmInfo[];
 };
 
-const App = ({genre, date, titleFilm}: Props): JSX.Element => (
+const App = ({filmInfo}: Props): JSX.Element => (
   <BrowserRouter>
     <Routes>
-      <Route path={'/'} element={<Main genre={genre} date={date} titleFilm={titleFilm}/>}/>
-      <Route path={AppRoute.Film} element={<Film />}/>
+      <Route path={'/'} element={<Main filmInfo={filmInfo} />}/>
+      <Route path={AppRoute.Film} element={<Film filmInfo={filmInfo}/>}/>
       <Route path={AppRoute.SignIn} element={<SignIn />}/>
-      <Route path={AppRoute.Review} element={<Review />}/>
-      <Route path={AppRoute.Player} element={<Player />}/>
+      <Route path={AppRoute.Review} element={<Review filmInfo={filmInfo}/>}/>
+      <Route path={AppRoute.Player} element={<Player filmInfo={filmInfo}/>}/>
 
       <Route path={AppRoute.MyList} element={
         <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-          <MyList />
+          <MyList filmInfo={filmInfo}/>
         </PrivateRoute>
       }
       />

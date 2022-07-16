@@ -1,6 +1,12 @@
+import { Link } from 'react-router-dom';
 import { FilmCard, Logo } from 'src/components';
+import {FilmInfo} from 'src/types/films';
 
-const Film = (): JSX.Element => (
+type Props= {
+  filmInfo: FilmInfo[];
+};
+
+const Film = ({filmInfo}: Props): JSX.Element => (
   <section>
     <section className="film-card film-card--full">
       <div className="film-card__hero">
@@ -27,10 +33,10 @@ const Film = (): JSX.Element => (
 
         <div className="film-card__wrap">
           <div className="film-card__desc">
-            <h2 className="film-card__title">The Grand Budapest Hotel</h2>
+            <h2 className="film-card__title">{filmInfo[0].title}</h2>
             <p className="film-card__meta">
-              <span className="film-card__genre">Drama</span>
-              <span className="film-card__year">2014</span>
+              <span className="film-card__genre">{filmInfo[0].genre}</span>
+              <span className="film-card__year">{filmInfo[0].release}</span>
             </p>
 
             <div className="film-card__buttons">
@@ -47,7 +53,7 @@ const Film = (): JSX.Element => (
                 <span>My list</span>
                 <span className="film-card__count">9</span>
               </button>
-              <a href="add-review.html" className="btn film-card__button">Add review</a>
+              <Link to="/films/:id/review" className="btn film-card__button">Add review</Link>
             </div>
           </div>
         </div>
@@ -56,7 +62,7 @@ const Film = (): JSX.Element => (
       <div className="film-card__wrap film-card__translate-top">
         <div className="film-card__info">
           <div className="film-card__poster film-card__poster--big">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+            <img src={filmInfo[0].src} alt="The Grand Budapest Hotel poster" width="218" height="327" />
           </div>
 
           <div className="film-card__desc">
@@ -75,21 +81,18 @@ const Film = (): JSX.Element => (
             </nav>
 
             <div className="film-rating">
-              <div className="film-rating__score">8,9</div>
+              <div className="film-rating__score">{filmInfo[0].rating}</div>
               <p className="film-rating__meta">
                 <span className="film-rating__level">Very good</span>
-                <span className="film-rating__count">240 ratings</span>
+                <span className="film-rating__count">{filmInfo[0].ratingCount} ratings</span>
               </p>
             </div>
 
             <div className="film-card__text">
-              <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave`s friend and protege.</p>
+              {filmInfo[0].text}
+              <p className="film-card__director"><strong>Director: {filmInfo[0].director}</strong></p>
 
-              <p>Gustave prides himself on providing first-class service to the hotel`s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave`s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
-
-              <p className="film-card__director"><strong>Director: Wes Anderson</strong></p>
-
-              <p className="film-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
+              <p className="film-card__starring"><strong>Starring: {filmInfo[0].actors} and other</strong></p>
             </div>
           </div>
         </div>
@@ -101,20 +104,21 @@ const Film = (): JSX.Element => (
         <h2 className="catalog__title">More like this</h2>
 
         <div className="catalog__films-list">
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
+          {
+            filmInfo.map((film) => (
+              <FilmCard key={film.id} filmInfo={film}/>
+            ))
+          }
         </div>
       </section>
 
       <footer className="page-footer">
         <div className="logo">
-          <a href="main.html" className="logo__link logo__link--light">
+          <Link to="/" className="logo__link logo__link--light">
             <span className="logo__letter logo__letter--1">W</span>
             <span className="logo__letter logo__letter--2">T</span>
             <span className="logo__letter logo__letter--3">W</span>
-          </a>
+          </Link>
         </div>
 
         <div className="copyright">

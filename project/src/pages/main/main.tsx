@@ -1,12 +1,12 @@
+import { Link } from 'react-router-dom';
 import { FilmCard, Logo } from 'src/components';
+import {FilmInfo} from 'src/types/films';
 
 type Props = {
-  genre: string;
-  date: string;
-  titleFilm: string;
+  filmInfo: FilmInfo[];
 };
 
-const Main = ({genre, date, titleFilm}: Props): JSX.Element => (
+const Main = ({filmInfo}: Props): JSX.Element => (
   <section>
     <section className="film-card">
       <div className="film-card__bg">
@@ -25,7 +25,7 @@ const Main = ({genre, date, titleFilm}: Props): JSX.Element => (
             </div>
           </li>
           <li className="user-block__item">
-            <a className="user-block__link" href='/'>Sign out</a>
+            <Link className="user-block__link" to='/login'>Sign out</Link>
           </li>
         </ul>
       </header>
@@ -33,14 +33,14 @@ const Main = ({genre, date, titleFilm}: Props): JSX.Element => (
       <div className="film-card__wrap">
         <div className="film-card__info">
           <div className="film-card__poster">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+            <img src={filmInfo[0].src} alt="The Grand Budapest Hotel poster" width="218" height="327" />
           </div>
 
           <div className="film-card__desc">
-            <h2 className="film-card__title">{titleFilm}</h2>
+            <h2 className="film-card__title">{filmInfo[0].title}</h2>
             <p className="film-card__meta">
-              <span className="film-card__genre">{genre}</span>
-              <span className="film-card__year">{date}</span>
+              <span className="film-card__genre">{filmInfo[0].genre}</span>
+              <span className="film-card__year">{filmInfo[0].release}</span>
             </p>
 
             <div className="film-card__buttons">
@@ -102,26 +102,11 @@ const Main = ({genre, date, titleFilm}: Props): JSX.Element => (
 
         <div className="catalog__films-list">
 
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
+          {
+            filmInfo.map((film) => (
+              <FilmCard key={film.id} filmInfo={film}/>
+            ))
+          }
 
         </div>
 

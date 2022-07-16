@@ -1,6 +1,12 @@
-const Player = (): JSX.Element => (
+import {FilmInfo} from 'src/types/films';
+
+type Props= {
+  filmInfo: FilmInfo[];
+};
+
+const Player = ({filmInfo}: Props): JSX.Element => (
   <div className="player">
-    <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+    <video src={filmInfo[1].player} className="player__video" poster="img/player-poster.jpg"></video>
 
     <button type="button" className="player__exit">Exit</button>
 
