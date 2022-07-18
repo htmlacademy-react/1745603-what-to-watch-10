@@ -1,6 +1,10 @@
-const Player = (): JSX.Element => (
+type Props= {
+  src: string;
+};
+
+const Player = ({src}: Props): JSX.Element => (
   <div className="player">
-    <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+    <video src={src} className="player__video" poster="img/player-poster.jpg"></video>
 
     <button type="button" className="player__exit">Exit</button>
 
