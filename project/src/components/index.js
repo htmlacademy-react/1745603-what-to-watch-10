@@ -3,3 +3,4 @@ export { default as FilmCard } from './film-card/FilmCard';
 export { default as Logo } from './logo/logo';
 export { default as NotFoundPage } from './not-found-page/NotFoundPage';
 export { default as PrivateRoute } from './private-route/PrivateRoute';
+export { default as CatalogList } from './catalog-list/CatalogList';

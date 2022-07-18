@@ -3,10 +3,10 @@ import { FilmCard, Logo} from 'src/components';
 import {FilmInfo} from 'src/types/films';
 
 type Props= {
-  filmInfo: FilmInfo[];
+  films: FilmInfo[];
 };
 
-const MyList = ({filmInfo}: Props): JSX.Element => (
+const MyList = ({films}: Props): JSX.Element => (
   <div className="user-page">
     <header className="page-header user-page__head">
       <Logo />
@@ -29,7 +29,7 @@ const MyList = ({filmInfo}: Props): JSX.Element => (
 
       <div className="catalog__films-list">
         {
-          filmInfo.map((film) => (
+          films.map((film) => (
             <FilmCard key={film.id} filmInfo={film}/>
           ))
         }

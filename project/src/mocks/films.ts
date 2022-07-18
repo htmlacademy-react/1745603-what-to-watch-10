@@ -1,4 +1,4 @@
-export const filmInfo = [{
+export const films = [{
   id: 0,
   title: 'Shutter Island',
   genre: 'Drama',

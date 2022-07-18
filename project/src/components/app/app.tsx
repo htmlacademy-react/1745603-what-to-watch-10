@@ -5,21 +5,21 @@ import {NotFoundPage, PrivateRoute} from 'src/components';
 import {FilmInfo} from 'src/types/films';
 
 type Props= {
-  filmInfo: FilmInfo[];
+  films: FilmInfo[];
 };
 
-const App = ({filmInfo}: Props): JSX.Element => (
+const App = ({films}: Props): JSX.Element => (
   <BrowserRouter>
     <Routes>
-      <Route path={'/'} element={<Main filmInfo={filmInfo} />}/>
-      <Route path={AppRoute.Film} element={<Film filmInfo={filmInfo}/>}/>
+      <Route path={'/'} element={<Main films={films} />}/>
+      <Route path={AppRoute.Film} element={<Film filmInfo={films[0]} />}/>
       <Route path={AppRoute.SignIn} element={<SignIn />}/>
-      <Route path={AppRoute.Review} element={<Review filmInfo={filmInfo}/>}/>
-      <Route path={AppRoute.Player} element={<Player filmInfo={filmInfo}/>}/>
+      <Route path={AppRoute.Review} element={<Review filmInfo={films[0]} />}/>
+      <Route path={AppRoute.Player} element={<Player src={films[0].player} />}/>
 
       <Route path={AppRoute.MyList} element={
         <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-          <MyList filmInfo={filmInfo}/>
+          <MyList films={films} />
         </PrivateRoute>
       }
       />

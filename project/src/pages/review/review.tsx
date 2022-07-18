@@ -1,22 +1,24 @@
-import { Fragment, useState } from 'react';
+import { ChangeEvent, Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Logo } from 'src/components';
-import {FilmInfo} from 'src/types/films';
+import { FilmInfo } from 'src/types/films';
 
 type Props= {
-  filmInfo: FilmInfo[];
+  filmInfo: FilmInfo;
 };
+
+const stars = [1,2,3,4,5,6,7,8,9,10];
 
 const Review = ({filmInfo}: Props): JSX.Element => {
   const [filmRating, setFilmRating] = useState(0);
   const [comment, setComment] = useState('');
-  const stars = [1,2,3,4,5,6,7,8,9,10];
+  const handleChange = (evt: ChangeEvent<HTMLTextAreaElement>) => setComment(evt.target.value);
 
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src={filmInfo[0].src} alt="The Grand Budapest Hotel" />
+          <img src={filmInfo.src} alt="The Grand Budapest Hotel" />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -48,7 +50,7 @@ const Review = ({filmInfo}: Props): JSX.Element => {
         </header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src={filmInfo[0].src} alt="The Grand Budapest Hotel poster" width="218" height="327" />
+          <img src={filmInfo.src} alt="The Grand Budapest Hotel poster" width="218" height="327" />
         </div>
       </div>
 
@@ -69,7 +71,7 @@ const Review = ({filmInfo}: Props): JSX.Element => {
           </div>
 
           <div className="add-review__text">
-            <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text" onChange={(evt) => setComment(evt.target.value)} value={comment}></textarea>
+            <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text" onChange={handleChange} value={comment}></textarea>
             <div className="add-review__submit">
               <button className="add-review__btn" type="submit">Post</button>
             </div>
