@@ -8,6 +8,7 @@ type Props= {
 const Video = ({src,autoPlay}: Props): JSX.Element => {
   const [isLoading, setIsLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
+  const clickButton = () => setIsPlaying(!isPlaying);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -42,7 +43,7 @@ const Video = ({src,autoPlay}: Props): JSX.Element => {
         </div>
 
         <div className="player__controls-row">
-          <button type="button" className="player__play" disabled={isLoading} onClick={() => setIsPlaying(!isPlaying)}>
+          <button type="button" className="player__play" disabled={isLoading} onClick={clickButton}>
             <svg viewBox="0 0 19 19" width="19" height="19">
               <use xlinkHref={isPlaying ? '#pause' : '#play-s'}></use>
             </svg>
