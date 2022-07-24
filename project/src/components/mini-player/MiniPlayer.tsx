@@ -12,7 +12,7 @@ const MiniPlayer = ({src}: Props): JSX.Element => {
       videoRef.current.muted = true;
       videoRef.current.play();
     }
-  });
+  }, []);
 
   return (
     <video src={src} className="player__video" ref={videoRef} />

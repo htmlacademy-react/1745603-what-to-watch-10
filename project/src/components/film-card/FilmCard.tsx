@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FilmInfo } from 'src/types/films';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { MiniPlayer } from 'src/components';
 
 type Props= {
@@ -11,12 +11,14 @@ const SECOND = 1000;
 
 const FilmCard = ({filmInfo}: Props): JSX.Element => {
   const [isCardHover, setIsCardHover] = useState(false);
+  const timer = useRef<any>();
 
   const onArticleHover = () => {
-    setTimeout(() => setIsCardHover(true), SECOND);
+    timer.current = setTimeout(() => setIsCardHover(true), SECOND);
   };
 
   const onArticleLeave = () => {
+    clearTimeout(timer.current);
     setIsCardHover(false);
   };
 

@@ -22,9 +22,12 @@ const Video = ({src,autoPlay}: Props): JSX.Element => {
     if (isPlaying) {
       videoRef.current.play();
       return;
+    } else {
+      videoRef.current.pause();
     }
 
     videoRef.current.pause();
+    videoRef.current.removeEventListener('loadeddata', () => setIsLoading(false));
   }, [isPlaying]);
 
   return (
