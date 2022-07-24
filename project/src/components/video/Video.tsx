@@ -9,25 +9,27 @@ const Video = ({src,autoPlay}: Props): JSX.Element => {
   const [isLoading, setIsLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
   const clickButton = () => setIsPlaying(!isPlaying);
+  const loadingData = () => setIsLoading(false);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
-    if (videoRef.current === null) {
+    const element = videoRef.current;
+    if (element === null) {
       return;
     }
 
-    videoRef.current.addEventListener('loadeddata', () => setIsLoading(false));
+
+    element.addEventListener('loadeddata', loadingData);
 
     if (isPlaying) {
-      videoRef.current.play();
+      element.play();
       return;
     } else {
-      videoRef.current.pause();
+      element.pause();
     }
 
-    videoRef.current.pause();
-    videoRef.current.removeEventListener('loadeddata', () => setIsLoading(false));
+    element.removeEventListener('loadeddata', loadingData);
   }, [isPlaying]);
 
   return (
